@@ -63,3 +63,7 @@ export function validarNascimento(valor: string): { valor?: string | null; erro?
   if (anos < 12 || anos > 70) return { erro: "Confira a data de nascimento." };
   return { valor };
 }
+
+export function ehUUID(valor: unknown): valor is string {
+  return typeof valor === "string" && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(valor);
+}
