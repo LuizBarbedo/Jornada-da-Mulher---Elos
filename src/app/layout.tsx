@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { ABeeZee, Raleway } from "next/font/google";
 import "./globals.css";
 import { NOME_APP } from "@/lib/marca";
+import { RegistrarSW } from "@/components/RegistrarSW";
 
 const raleway = Raleway({
   variable: "--font-raleway",
@@ -34,7 +35,10 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pt-BR" className={`${raleway.variable} ${abeezee.variable} h-full antialiased`}>
-      <body className="min-h-full bg-white text-grafite">{children}</body>
+      <body className="min-h-full bg-white text-grafite">
+        {children}
+        <RegistrarSW />
+      </body>
     </html>
   );
 }

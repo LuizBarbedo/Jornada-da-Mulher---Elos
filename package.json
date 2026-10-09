@@ -5,7 +5,10 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "seed": "node --env-file=.env.local scripts/seed.mjs",
+    "testar:rls": "node --env-file=.env.local scripts/testar-rls.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.7",

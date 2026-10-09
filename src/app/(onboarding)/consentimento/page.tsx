@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 import { Lock, Download, Trash2, HeartHandshake } from "lucide-react";
 import { ProgressoOnboarding } from "@/components/ProgressoOnboarding";
-import { aceitouTermoVigente, exigirUsuaria } from "@/lib/auth";
+import { aceitouTermoVigente, etapaPendente, exigirUsuaria } from "@/lib/auth";
 import { VERSAO_TERMO } from "@/lib/consentimento";
 import { FormConsentimento } from "./FormConsentimento";
 
@@ -16,7 +16,7 @@ const PONTOS = [
 
 export default async function Consentimento() {
   await exigirUsuaria();
-  if (await aceitouTermoVigente()) redirect("/perfil-inicial");
+  if (await aceitouTermoVigente()) redirect((await etapaPendente()) ?? "/inicio");
 
   return (
     <div className="flex flex-col gap-10">
