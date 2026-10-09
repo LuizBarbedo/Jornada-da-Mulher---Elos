@@ -5,6 +5,7 @@ import { Minus, Plus } from "lucide-react";
 import { salvarPerfilInicial } from "../actions";
 import { BotaoEnviar } from "@/components/BotaoEnviar";
 import { Aviso, Campo } from "@/components/ui";
+import { CampoData } from "@/components/CampoData";
 
 type Props = { hoje: string; nome: string; exibicao: string; dum: string; ciclo: number };
 
@@ -15,10 +16,9 @@ export function FormPerfilInicial({ hoje, nome, exibicao, dum, ciclo: cicloInici
 
   return (
     <form action={acao} className="flex flex-col gap-7" noValidate>
-      <Campo
+      <CampoData
         id="data_ultima_menstruacao"
         name="data_ultima_menstruacao"
-        type="date"
         rotulo="Primeiro dia da última menstruação"
         max={hoje}
         defaultValue={dum}

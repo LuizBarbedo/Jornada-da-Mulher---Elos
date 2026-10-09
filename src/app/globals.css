@@ -36,9 +36,6 @@ h1, h2, h3, h4, nav, button, label, .font-titulo {
   outline-offset: 2px;
 }
 
-input[type="date"]::-webkit-calendar-picker-indicator {
-  opacity: 0.5;
-}
 
 /* Texto longo de leitura (tela de conteúdo) */
 .leitura p { margin-bottom: 1.25em; }
