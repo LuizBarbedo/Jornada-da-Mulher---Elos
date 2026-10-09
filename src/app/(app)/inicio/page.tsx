@@ -1,6 +1,7 @@
 import { Trash2 } from "lucide-react";
 import { Logo } from "@/components/Logo";
 import { Disclaimer } from "@/components/Disclaimer";
+import { ProximasJornadas } from "@/components/ProximasJornadas";
 import { Quadrado, Sobretitulo } from "@/components/ui";
 import { getPerfil } from "@/lib/auth";
 import { createClient } from "@/lib/supabase/server";
@@ -132,6 +133,13 @@ export default async function Inicio() {
       </section>
 
       <Calendario hoje={hoje} dum={dum} duracao={duracao} registros={porDia} />
+
+      <section className="flex flex-col gap-5">
+        <h2 className="text-2xl font-light">
+          Próximas <span className="font-black">jornadas</span>
+        </h2>
+        <ProximasJornadas />
+      </section>
 
       <Disclaimer />
     </div>
