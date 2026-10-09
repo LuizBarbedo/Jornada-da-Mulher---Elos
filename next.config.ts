@@ -20,6 +20,10 @@ const nextConfig: NextConfig = {
       },
     },
   },
+  experimental: {
+    // Upload de imagem dos conteúdos no /admin (limite do bucket: 5 MB)
+    serverActions: { bodySizeLimit: "6mb" },
+  },
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "*.supabase.co" },

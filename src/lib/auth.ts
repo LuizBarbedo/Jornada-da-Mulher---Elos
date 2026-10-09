@@ -57,3 +57,11 @@ export function ehAdmin(email: string | undefined | null): boolean {
     .filter(Boolean);
   return lista.includes(email.toLowerCase());
 }
+
+/** Garante que a requisição é de uma admin (lista ADMIN_EMAILS). */
+export async function exigirAdmin() {
+  const user = await getUsuaria();
+  if (!user) redirect("/admin/login");
+  if (!ehAdmin(user.email)) redirect("/admin/sem-acesso");
+  return user;
+}
