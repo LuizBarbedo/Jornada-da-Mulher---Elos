@@ -1,0 +1,15 @@
+import "server-only";
+import { createClient } from "@supabase/supabase-js";
+
+/**
+ * Cliente com service role: IGNORA o RLS. Use apenas no servidor, depois
+ * de verificar a autorização (ex.: isAdmin, ou a própria usuária apagando
+ * a conta).
+ */
+export function createAdminClient() {
+  return createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!,
+    { auth: { persistSession: false, autoRefreshToken: false } },
+  );
+}
