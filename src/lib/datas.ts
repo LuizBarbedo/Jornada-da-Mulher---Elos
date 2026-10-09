@@ -33,3 +33,17 @@ export function ehDataISO(valor: string): boolean {
 export function formatarData(iso: string, opcoes: Intl.DateTimeFormatOptions = { day: "numeric", month: "long" }) {
   return new Intl.DateTimeFormat("pt-BR", { ...opcoes, timeZone: "UTC" }).format(isoParaUTC(iso));
 }
+
+/** "agora", "há 5 min", "há 3 h", "ontem", "há 4 dias" ou a data. */
+export function tempoRelativo(timestamp: string, agora = Date.now()): string {
+  const seg = Math.max(0, Math.floor((agora - new Date(timestamp).getTime()) / 1000));
+  if (seg < 60) return "agora";
+  const min = Math.floor(seg / 60);
+  if (min < 60) return `há ${min} min`;
+  const h = Math.floor(min / 60);
+  if (h < 24) return `há ${h} h`;
+  const dias = Math.floor(h / 24);
+  if (dias === 1) return "ontem";
+  if (dias < 7) return `há ${dias} dias`;
+  return new Intl.DateTimeFormat("pt-BR", { day: "numeric", month: "short", timeZone: FUSO }).format(new Date(timestamp));
+}
